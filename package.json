@@ -1,0 +1,108 @@
+{
+  "name": "react-product-image",
+  "version": "0.1.0",
+  "description": "Generate product image for shop, e-commerce pages",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erhangundogan/react-product-image.git"
+  },
+  "files": [
+    "dist/*",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "keywords": [
+    "product",
+    "image",
+    "picture",
+    "product-image",
+    "thumbnail",
+    "shop",
+    "commerce",
+    "magnify",
+    "zoom"
+  ],
+  "author": "erhan.gundogan@gmail.com",
+  "license": "MIT",
+  "private": false,
+  "types": "dist/index.d.ts",
+  "main": "dist/cjs/react-product-image.js",
+  "module": "dist/es/react-product-image.js",
+  "browser": "dist/umd/react-product-image.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "test": "rimraf coverage && jest",
+    "build": "NODE_ENV=development rollup -c rollup.examples.config.js -w",
+    "build:prod": "yarn clean && NODE_ENV=production rollup -c rollup.config.js",
+    "start": "serve -s dist",
+    "watch": "yarn clean && run-p build start",
+    "prepublishOnly": "yarn build:prod"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/eslint-parser": "^7.16.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-replace": "^3.0.1",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.4.0",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^26.0.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-scope": "^7.1.0",
+    "jest": "^27.4.7",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "rollup": "^2.66.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-filesize": "^9.1.2",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-ts": "^2.0.5",
+    "serve": "^13.0.2",
+    "ts-jest": "^27.1.3",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.5"
+  },
+  "peerDependencies": {
+    "react": ">=17.x",
+    "react-dom": ">=17.x"
+  },
+  "dependencies": {
+    "image-helpers": "^1.3.0"
+  },
+  "jest": {
+    "rootDir": "./src",
+    "coverageDirectory": "../coverage",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/!(*.test).(ts|tsx)"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "./src/styleMock.js"
+    },
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ]
+  }
+}
