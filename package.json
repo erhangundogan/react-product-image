@@ -1,7 +1,7 @@
 {
   "name": "react-product-image",
-  "version": "0.1.0",
-  "description": "Generate product image for shop, e-commerce pages",
+  "version": "0.2.0",
+  "description": "React component provides product image thumbnails, selection, magnify functionality for shop/store pages",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/erhangundogan/react-product-image.git"

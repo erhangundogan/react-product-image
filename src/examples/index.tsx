@@ -6,7 +6,7 @@ import ThumbnailOptionsProvider from '../providers/ThumbnailOptionsProvider/Thum
 
 const Example = () => {
   return (
-    <div className="react-thumbnails">
+    <div className="react-product-image">
       <ImagesProvider
         options={{ maxImagesCount: 5 }}
         urls={[

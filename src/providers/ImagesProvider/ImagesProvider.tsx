@@ -12,7 +12,7 @@ const ImagesProvider = ({ children, urls: defaultUrls = [], options = {} }: Imag
   const addUrl = useCallback(
     (url: string) => {
       if (options.maxImagesCount && urls.length === options.maxImagesCount) {
-        console.log('addUrl, max images count reached');
+        console.log('Max images count reached');
         return;
       }
       setUrls((items = []) => [...items, url]);
@@ -29,7 +29,7 @@ const ImagesProvider = ({ children, urls: defaultUrls = [], options = {} }: Imag
     }
 
     if (options.maxImagesCount && images.length === options.maxImagesCount) {
-      console.log('useEffect, max images count reached');
+      console.log('Max images count reached');
       return;
     }
 
