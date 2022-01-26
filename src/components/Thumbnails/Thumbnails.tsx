@@ -1,6 +1,5 @@
 import React from 'react';
 import { useImages } from '../../providers/ImagesProvider/ImagesProvider';
-import './Thumbnails.css';
 
 const Thumbnails = () => {
   const { images, setSelectedImageIndex } = useImages();

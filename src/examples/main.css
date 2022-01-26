@@ -23,6 +23,7 @@
   width: 100px;
   height: 100px;
   cursor: pointer;
+  margin-bottom: .5rem;
 }
 .thumbnail img {
   width: 100%;

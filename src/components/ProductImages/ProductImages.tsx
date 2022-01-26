@@ -3,7 +3,7 @@ import ReactImageMagnify from 'react-image-magnify';
 import Thumbnails from '../Thumbnails/Thumbnails';
 import { useImages } from '../../providers/ImagesProvider/ImagesProvider';
 
-const ProductImages = ({ children }) => {
+const ProductImages = () => {
   const { images, imageUrls, selectedImageIndex } = useImages();
   const { width, height } = images[selectedImageIndex] || {};
   let magnificationSize = {};
@@ -18,7 +18,7 @@ const ProductImages = ({ children }) => {
   }
 
   return (
-    <div className="image-container">
+    <>
       <div className="thumbnail-container">
         <Thumbnails />
       </div>
@@ -43,8 +43,7 @@ const ProductImages = ({ children }) => {
           />
         ) : null}
       </div>
-      <div className="product-content-container">{children}</div>
-    </div>
+    </>
   );
 };
 

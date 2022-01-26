@@ -22,29 +22,21 @@ const Example = () => {
         'https://images.unsplash.com/photo-1642965961298-02f31304044d?w=1300&q=80'
       ]}
     >
-      <ProductImages>
-        <div>
-          <h1>Terms and Privacy Policy</h1>
+      <div className="image-container">
+        <ProductImages />
+        <div className="product-content-container">
+          <h1>Lorem Ipsum</h1>
           <p>
-            The following terms and conditions govern all use of the WebsitePolicies.com website and all
-            content, services, and products available through the website, including, but not limited to, the
-            client area (collectively referred to as the Site).
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius mauris eu nisi molestie, ut dapibus mi bibendum. Sed vehicula purus quam, sit amet lobortis augue molestie non. Donec volutpat ligula vitae nisl elementum lobortis. Maecenas ac metus varius, rhoncus dui ut, gravida lectus. Vestibulum purus massa, tristique vel nulla in, ullamcorper sagittis lorem. Etiam suscipit neque quis fringilla tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non ipsum augue. Fusce nec orci metus. Pellentesque lacinia urna sed libero accumsan tincidunt. Aliquam aliquet nibh tellus, id feugiat erat suscipit ac. In sit amet maximus enim, sit amet gravida ligula. Ut ornare, neque id cursus aliquet, tellus ante faucibus nisi, et bibendum leo magna sed odio.
           </p>
           <p>
-            The Site is owned and operated by VLD Interactive Inc. (collectively referred to as the Operator).
-            The Site is offered subject to your acceptance without modification of all of the terms and
-            conditions contained herein and all other operating rules, policies including, without limitation,
-            the Operator's privacy policy and procedures that may be published from time to time on this Site
-            by the Operator (collectively, the "Agreement").
+            Mauris placerat consectetur augue, vel tristique urna aliquam quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In eu urna malesuada, tempor mi luctus, faucibus massa. Phasellus tincidunt lacus ut nisi pharetra, vitae congue dui congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque in orci ullamcorper, varius diam et, blandit orci. Aliquam in ultrices ipsum, id venenatis sapien. Pellentesque malesuada dui in nulla tincidunt, a pretium magna consequat. Proin odio arcu, dapibus a nibh sit amet, dapibus pulvinar quam.
           </p>
           <p>
-            Please read this Agreement carefully before accessing or using the Site. By accessing or using any
-            part of the website, you agree to become bound by the terms and conditions of this agreement. If
-            you do not agree to all the terms and conditions of this agreement, then you may not access the
-            Site or use any services. The Site is available only to individuals who are at least 13 years old.
+            <strong>Praesent bibendum vel eros eget porttitor.</strong>
           </p>
         </div>
-      </ProductImages>
+      </div>
     </ImagesProvider>
   );
 };

@@ -1,6 +1,6 @@
 {
   "name": "react-product-image",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "React component provides product image thumbnails, selection, magnify functionality for shop/store pages",
   "repository": {
     "type": "git",
