@@ -47,9 +47,7 @@ export default {
     postcss({
       extract: false
     }),
-    ts({
-      tsconfig: production ? 'tsconfig.prod.json' : 'tsconfig.json'
-    }),
+    ts(),
     commonjs(),
     resolve({
       browser: true,
