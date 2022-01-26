@@ -1,0 +1,33 @@
+.image-container {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 1rem;
+}
+.thumbnail-container {
+  flex: 1 1 auto;
+}
+.magnify-container {
+  margin: 0 1rem;
+  flex: 1 1 auto;
+  min-width: 30vw;
+  line-height: 1;
+}
+.product-content-container {
+  flex: 1 1 auto
+}
+.thumbnails {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  object-position: 50% 50%;
+}

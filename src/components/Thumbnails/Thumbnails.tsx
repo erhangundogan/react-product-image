@@ -1,49 +1,24 @@
 import React from 'react';
 import { useImages } from '../../providers/ImagesProvider/ImagesProvider';
-import { useThumbnailOptions } from '../../providers/ThumbnailOptionsProvider/ThumbnailOptionsProvider';
 import './Thumbnails.css';
 
-const Thumbnails = ({ options: defaultOptions, onRenderThumbnail }: any) => {
-  const { options, getDimensions, showOptions } = useThumbnailOptions();
-  const thumbnailOptions = { ...options, ...defaultOptions };
-  const { autoSize, border, size, shape, showUrl, shadow } = thumbnailOptions;
-  const { width, height } = getDimensions();
-  const sizeStyles = autoSize ? {} : { width, height };
-  const { images } = useImages();
+const Thumbnails = () => {
+  const { images, setSelectedImageIndex } = useImages();
 
-  const defaultRender = (image: any, index: number) => {
-    return (
-      <>
-        <div className={`thumbnail-container ${shadow ? 'shadow' : ''}`} style={sizeStyles}>
+  return (
+    <div className="thumbnails">
+      {images?.map((image, index) => (
+        <div key={index} className="thumbnail">
           <img
-            className={`thumbnail-image ${shape} ${border ? 'border' : ''}`}
             src={image?.dataUrl || image?.url}
             alt=""
             onError={(event) =>
               console.error('Cannot render thumbnail of', (event.target as HTMLImageElement).src)
             }
+            onClick={() => setSelectedImageIndex(index)}
           />
         </div>
-        {showUrl && image?.url ? (
-          <div className="thumbnail-caption" style={autoSize ? { maxWidth: '100%' } : { width }}>
-            <a className="thumbnail-caption-link" href={image.url}>
-              {image.url}
-            </a>
-          </div>
-        ) : null}
-      </>
-    );
-  };
-
-  return (
-    <div className="thumbnails-container">
-      <div className="thumbnail-images">
-        {images?.map((image, index) => (
-          <div key={index}>
-            {onRenderThumbnail ? onRenderThumbnail(image, index) : defaultRender(image, index)}
-          </div>
-        ))}
-      </div>
+      ))}
     </div>
   );
 };

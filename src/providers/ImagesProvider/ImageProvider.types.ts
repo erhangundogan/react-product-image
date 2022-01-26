@@ -2,8 +2,10 @@ import { PropsWithChildren } from 'react';
 
 export interface ImagesProviderContextType {
   images: any[];
-  addUrl: (url: string) => void;
-  urls: string[];
+  setSelectedImageIndex: any;
+  selectedImageIndex: number;
+  thumbUrls: string[];
+  imageUrls: string[];
   options: ImageProviderOptionsType;
 }
 
@@ -25,7 +27,6 @@ export interface FetchImagesCorsOptionsType {
 }
 
 export interface ImageProviderOptionsType {
-  maxImagesCount?: number;
   verifyUrlsOptions?: VerifyUrlsOptionsType;
   fetchImagesOptions?: FetchImagesOptionsType;
   fetchImagesCorsOptions?: FetchImagesCorsOptionsType;

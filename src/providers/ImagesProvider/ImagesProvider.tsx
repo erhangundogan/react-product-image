@@ -1,35 +1,34 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { fetchImages, verifyUrls } from 'image-helpers';
 import { ImageProviderPropsType, ImagesProviderContextType } from './ImageProvider.types';
 
 export const ImagesProviderContext = createContext<ImagesProviderContextType>({} as any);
 export const useImages = () => useContext(ImagesProviderContext);
 
-const ImagesProvider = ({ children, urls: defaultUrls = [], options = {} }: ImageProviderPropsType) => {
+const ImagesProvider = ({
+  children,
+  thumbUrls: defaultThumbUrls = [],
+  imageUrls: defaultImageUrls = [],
+  options = {}
+}: ImageProviderPropsType) => {
+  const [thumbs, setThumbs] = useState<any[]>([]);
   const [images, setImages] = useState<any[]>([]);
-  const [urls, setUrls] = useState<string[]>([]);
-
-  const addUrl = useCallback(
-    (url: string) => {
-      if (options.maxImagesCount && urls.length === options.maxImagesCount) {
-        console.log('Max images count reached');
-        return;
-      }
-      setUrls((items = []) => [...items, url]);
-    },
-    [options.maxImagesCount, urls.length]
-  );
+  const [thumbUrls, setThumbUrls] = useState<string[]>([]);
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   useEffect(() => {
-    if (urls.length === 0) {
+    if (imageUrls.length === 0) {
       if (images.length > 0) {
         setImages([]);
       }
       return;
     }
 
-    if (options.maxImagesCount && images.length === options.maxImagesCount) {
-      console.log('Max images count reached');
+    if (thumbUrls.length === 0) {
+      if (thumbs.length > 0) {
+        setThumbs([]);
+      }
       return;
     }
 
@@ -44,30 +43,45 @@ const ImagesProvider = ({ children, urls: defaultUrls = [], options = {} }: Imag
       }
     };
 
-    const existingUrls = images.map(({ url }) => url);
-    const newUrls = urls.filter((url) => !existingUrls.includes(url));
-    if (newUrls.length === 0) {
+    const existingImageUrls = images.map(({ url }) => url);
+    const newImageUrls = imageUrls.filter((url) => !existingImageUrls.includes(url));
+    if (newImageUrls.length === 0) {
       return;
     }
-    verifyAndFetch(newUrls).then((newImages) => {
+    verifyAndFetch(newImageUrls).then((newImages) => {
       if (newImages) {
         setImages((currentImages) => [...currentImages, ...newImages]);
       }
     });
-  }, [urls]);
+
+    const existingThumbUrls = thumbs.map(({ url }) => url);
+    const newThumbUrls = thumbUrls.filter((url) => !existingThumbUrls.includes(url));
+    if (newThumbUrls.length === 0) {
+      return;
+    }
+    verifyAndFetch(newThumbUrls).then((newThumbs) => {
+      if (newThumbs) {
+        setThumbs((currentThumbs) => [...currentThumbs, ...newThumbs]);
+      }
+    });
+  }, [imageUrls, thumbUrls]);
 
   useEffect(() => {
-    if (defaultUrls.length > 0) {
-      if (options.maxImagesCount) {
-        setUrls(defaultUrls.slice(0, options.maxImagesCount));
-      } else {
-        setUrls(defaultUrls);
-      }
+    if (defaultThumbUrls.length > 0) {
+      setThumbUrls(defaultThumbUrls);
     }
-  }, [defaultUrls]);
+  }, [defaultThumbUrls]);
+
+  useEffect(() => {
+    if (defaultImageUrls.length > 0) {
+      setImageUrls(defaultImageUrls);
+    }
+  }, [defaultImageUrls]);
 
   return (
-    <ImagesProviderContext.Provider value={{ images, addUrl, urls, options }}>
+    <ImagesProviderContext.Provider
+      value={{ images, thumbUrls, imageUrls, options, selectedImageIndex, setSelectedImageIndex }}
+    >
       {children}
     </ImagesProviderContext.Provider>
   );
