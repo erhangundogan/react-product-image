@@ -1,6 +1,6 @@
 {
   "name": "react-product-image",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "React component provides product image thumbnails, selection, magnify functionality for shop/store pages",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "author": "erhan.gundogan@gmail.com",
   "license": "MIT",
   "private": false,
-  "types": "dist/index.d.ts",
+  "types": "dist/react-product-image.d.ts",
   "main": "dist/cjs/react-product-image.js",
   "module": "dist/es/react-product-image.js",
   "browser": "dist/umd/react-product-image.js",
